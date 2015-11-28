@@ -1,10 +1,10 @@
 # WuMQTTAgregate
 
-With many climate related parameters reporting as topics to a MQTT server, this service subscribes to *MQTT Topics*, which are related to weather and periodically pushed the parameters to [Weather Underground](www.weatherunderground.com).
+With many climate related parameters reporting as topics to a MQTT server, this service subscribes to *MQTT Topics*, which are related to weather and periodically pushed the parameters to [Weather Underground](http://www.weatherunderground.com).
 
 Weather Underground provide a simple web HTTP GET API. See [here](http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol)
 
-In order to provide this functionality, this app uses two libraries. [wupws](github.com/danward79/wupws), which provides an interface to Weather Underground and [sensorcache](github.com/danward79/sensorcache), which provides and manages a cache of sensor readings with automatic expiry.
+In order to provide this functionality, this app uses two libraries. [wupws](https://github.com/danward79/wupws), which provides an interface to Weather Underground and [sensorcache](https://github.com/danward79/sensorcache), which provides and manages a cache of sensor readings with automatic expiry.
 
 ## Install
 
