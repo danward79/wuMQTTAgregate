@@ -71,7 +71,7 @@ func main() {
 
 	wg.Wait()
 
-	log.Println("wuMQTTAgregate: exiting")
+	log.Println("wuMQTTAgregate: Exiting")
 }
 
 //subscribeSensors uses config data to setup subscriptions to sensors that feed the WU API
@@ -105,7 +105,6 @@ func cacheReadings(c *sensorCache.Cache, s *mqttservices.MqttClient) {
 
 	for m := range chIn {
 		c.Insert(addressParameter[m.TopicName], fmt.Sprintf("%s", m.Payload))
-		fmt.Println(c)
 	}
 
 	log.Println("wuMQTTAgregate: MQTT broker connection closed")
@@ -141,7 +140,6 @@ func pushUpdates(c *sensorCache.Cache, td time.Duration, stn *wupws.Station) {
 			if err != nil {
 				log.Println(err)
 			}
-			fmt.Println(stn)
 
 		case <-done:
 			log.Println("wuMQTTAgregate: Pushing stopped")
