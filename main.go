@@ -19,7 +19,7 @@ var config map[string]string
 var addressParameter map[string]string
 var sensorExpire, stationReportPeriod, checkCache *time.Duration
 var wg sync.WaitGroup
-var done chan bool
+var done chan struct{}
 
 func init() {
 	//Command line variables
@@ -49,7 +49,7 @@ func init() {
 	config = readConfigFile(*configPath)
 	addressParameter = mapAddressToParameter(&config)
 
-	done = make(chan bool)
+	done = make(chan struct{})
 }
 
 func main() {
@@ -109,7 +109,7 @@ func cacheReadings(c *sensorCache.Cache, s *mqttservices.MqttClient) {
 
 	log.Println("wuMQTTAgregate: MQTT broker connection closed")
 	c.StopMonitoring()
-	done <- true
+	close(done)
 }
 
 //getCacheReadings grabs the readings and returns a map[string]string
